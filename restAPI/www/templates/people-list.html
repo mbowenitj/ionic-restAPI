@@ -9,14 +9,14 @@
         </div>
 
         <div class = "row" ng-repeat="person in people">
-           <div class = "col">{{ $index + 1 }}</div>
+           <div class = "col">{{ $index + 1 +(count*10)}}</div>
            <div class = "col">{{person.name}}</div>
            <div class = "col">{{person.species}}</div>
        </div>
 
       <div class="button-group">
-        <button class="button button-block button-positive">Previous</button>
-        <button class="button button-block button-positive">Next</button>
+        <button class="button button-block button-positive" ng-click="previous()">Previous</button>
+        <button class="button button-block button-positive" ng-click="next()">Next</button>
      </div>
   </div>
 

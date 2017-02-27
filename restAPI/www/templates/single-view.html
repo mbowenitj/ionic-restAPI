@@ -1,5 +1,29 @@
 <ion-view view-title="Single View">
   <ion-content>
   <h1>Single View</h1>
+      <div class="container">
+          <div class = "row">
+               <div class = "col">#</div>
+               <div class = "col">Name</div>
+               <div class = "col">Height</div>
+               <div class = "col">Mass</div>
+               <div class = "col">Home World</div>
+          </div>
+
+          <div class = "row" ng-repeat="person in people">
+             <div class = "col">{{ $index + 1 }}</div>
+             <div class = "col">{{person.name}}</div>
+             <div class = "col">{{person.height}}</div>
+             <div class = "col">{{person.mass}}</div>
+             <div class = "col">{{person.homeworld}}</div>
+             <div class = "col">{{person.species}}</div>
+             <div class = "col">{{person.starship}}</div>
+         </div>
+
+        <div class="button-group">
+          <button class="button button-block button-positive" ng-click="previous()">Previous</button>
+          <button class="button button-block button-positive" ng-click="next()">Next</button>
+       </div>
+    </div>
   </ion-content>
 </ion-view>
