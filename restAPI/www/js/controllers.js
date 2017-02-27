@@ -1,5 +1,19 @@
 angular.module('starter')
-
+  .run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if(window.cordova && window.cordova.plugins.Keyboard) {
+        //Comment out this line if you want the next and previous buttons
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      }
+      if(window.StatusBar) {
+        // Set the statusbar to use the default style, tweak this to
+        // remove the status bar on iOS or change it to use white instead of dark colors.
+        StatusBar.styleDefault();
+      }
+      })
+  })
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 
@@ -8,6 +22,8 @@ angular.module('starter')
 
 .controller('PeoplelistCtrl',['$scope','$stateParams','$http',
   function($scope, $stateParams,$http) {
+
+
 
   var vm = this;
   vm.people = [];
