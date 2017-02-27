@@ -8,6 +8,8 @@
                <div class = "col">Height</div>
                <div class = "col">Mass</div>
                <div class = "col">Home World</div>
+               <div class = "col">Species</div>
+               <div class = "col">Starship</div>
           </div>
 
           <div class = "row" ng-repeat="person in people">
@@ -17,7 +19,7 @@
              <div class = "col">{{person.mass}}</div>
              <div class = "col">{{person.homeworld}}</div>
              <div class = "col">{{person.species}}</div>
-             <div class = "col">{{person.starship}}</div>
+             <div class = "col">{{person.starships[0]}}</div>
          </div>
 
         <div class="button-group">

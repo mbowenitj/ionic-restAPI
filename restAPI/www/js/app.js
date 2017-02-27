@@ -56,7 +56,7 @@ angular.module('starter', ['ionic', 'starter'])
       views: {
         'menuContent': {
           templateUrl: 'templates/single-view.html',
-          controller: 'Single-viewCtrl'
+          controller: 'SingleViewCtrl'
         }
       }
     }) ;
