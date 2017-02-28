@@ -1,5 +1,26 @@
 <ion-view view-title="Search">
   <ion-content>
-    <h1>Search</h1>
+        <div class="search-container">
+
+        <div class="bar">
+  			<!-- Create a binding between the search model and the text field -->
+  			 <input type="text" ng-model="name" placeholder="search just on people" />
+         <i class="icon ion-ios-search-strong"></i>
+  		 </div>
+       <br><br>
+        <div class = "row">
+             <div class = "col">#</div>
+             <div class = "col">Name</div>
+        </div>
+        <div class = "row" ng-repeat="person in people | filter: name">
+           <div class = "col">{{ $index + 1 +(count*10)}}</div>
+           <div class = "col">{{person.name}}</div>
+       </div>
+          <div class="button-group">
+            <button class="button button-block button-assertive" ng-click="getPosition()">Locate Store near you</button>
+            <button class="button button-block button-positive" ng-click="previous()">Previous</button>
+            <button class="button button-block button-positive" ng-click="next()">Next</button>
+         </div>
+      </div>
   </ion-content>
 </ion-view>
