@@ -21,3 +21,11 @@
    font-size: 21px;
    padding-top: 8px;
  }
+ .scroll {
+     height: 100%;
+ }
+
+ #map {
+     width: 100%;
+     height: 100%;
+ }
