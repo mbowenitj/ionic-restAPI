@@ -171,6 +171,9 @@ angular.module('starter')
     var vm = this;
     vm.people = [];
 
+    var vm1 = this;
+    vm1.planets = [];
+
     function get(someUrl){
         $http({
           method: 'GET',
@@ -191,6 +194,7 @@ angular.module('starter')
                   method: 'GET',
                     url: elem.species[0]
                 })
+
                 .then(function successCallback(response) {
                     // this callback will be called asynchronously when the response is available
                       console.log("success, ",response);
@@ -204,6 +208,21 @@ angular.module('starter')
                     return null;
                     // called asynchronously if an error occurs or server returns response with an error status.
                   });
+
+
+                  $http({
+                    method: 'GET',
+                      url: 'http://swapi.co/api/planets/'
+                  })
+                  .then(function successCallback(response) {
+                      // this callback will be called asynchronously when the response is available
+                        console.log("success, ",response);
+                          elem.planets=response.data.name;
+                    }, function errorCallback(response) {
+                      $state.go('login');
+                      console.log("failure, ",response);
+                      // called asynchronously if an error occurs or server returns response with an error status.
+                    });
 
               });
               $scope.people=results;
@@ -394,6 +413,25 @@ angular.module('starter')
 
   }, function(error){
     console.log("Could not get location");
+  });
+
+  //Wait until the map is loaded
+  google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+
+    var marker = new google.maps.Marker({
+        map: $scope.map,
+        animation: google.maps.Animation.DROP,
+        position: latLng
+    });
+
+    var infoWindow = new google.maps.InfoWindow({
+        content: "Here I am!"
+    });
+
+    google.maps.event.addListener(marker, 'click', function () {
+        infoWindow.open($scope.map, marker);
+    });
+
   });
 
 });
