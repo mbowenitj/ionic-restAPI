@@ -35,10 +35,10 @@ angular.module('starter')
 
         })
 
-        // $http({
-        //   method: 'GET',
-        //     url: 'http://swapi.co/api/planets/'
-        // })
+        $http({
+          method: 'GET',
+            url: 'http://swapi.co/api/planets/'
+        })
 
         .then(function successCallback(response) {
             // this callback will be called asynchronously when the response is available
