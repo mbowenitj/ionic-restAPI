@@ -25,8 +25,8 @@ angular.module('starter')
     var previous;
     $scope.count=0;
     url="http://swapi.co/api/people/";
-  var vm = this;
-  vm.people = [];
+    var vm = this;
+    vm.people = [];
 
     function get(someUrl){
         $http({
@@ -35,6 +35,11 @@ angular.module('starter')
 
         })
 
+        // $http({
+        //   method: 'GET',
+        //     url: 'http://swapi.co/api/planets/'
+        // })
+
         .then(function successCallback(response) {
             // this callback will be called asynchronously when the response is available
             var results = [];
@@ -42,28 +47,31 @@ angular.module('starter')
             next=response.data.next;
             previous=response.data.previous;
               console.log("success, ",response);
-              //$scope.people = response.data.results;
+
               response.data.results.forEach(function(elem){
                 $http({
                   method: 'GET',
                     url: elem.species[0]
+
                 })
                 .then(function successCallback(response) {
+                    var planetresults = [];
                     // this callback will be called asynchronously when the response is available
                       console.log("success, ",response);
                       //$scope.people = response.name;
                       elem.species=response.data.name;
                       results.push(elem);
                       console.log(results);
-                  }, function errorCallback(response) {
-
+                      $scope.planets = response.data;
+                        console.log(planetresults);
+                  },function errorCallback(response) {
                     console.log("failure, ",response);
                     return null;
                     // called asynchronously if an error occurs or server returns response with an error status.
                   });
-
               });
               $scope.people=results;
+              $scope.planets=planetresults;
 
 
           }, function errorCallback(response) {
